@@ -1,4 +1,4 @@
-google.com, pub-5519779824227102, DIRECT, f08c47fec0942fa0
+google.com, pub-6814328868971696, DIRECT, f08c47fec0942fa0
 
 facebook.com, 1813311482187304, DIRECT, c3e20eee3f780d68
 startapp.com, 100352325, DIRECT
