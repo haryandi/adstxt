@@ -1,6 +1,6 @@
 {
   "hosting": {
     "public": "public",
-    "sites":"keresahanhati.web.app"
+    "site":"keresahanhati.web.app"
   }
 }
