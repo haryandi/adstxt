@@ -35,7 +35,7 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASEJJMS}}'
+          firebaseServiceAccount: '${{ secrets.FBKERESAHANHATI}}'
           channelId: live  
-          projectId: psp-jjm
+          projectId: keresahan-hati
 
