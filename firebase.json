@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "public",
-    "sites":"keresahanhati"
+    "site":"keresahanhati",
+    "public": "public"
   }
 }
