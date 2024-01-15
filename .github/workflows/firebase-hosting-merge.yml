@@ -37,5 +37,5 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FBKERESAHANHATI}}'
           channelId: live  
-          projectId: keresahan-hati
+          projectId: haryandiok
 
