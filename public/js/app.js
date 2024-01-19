@@ -48,7 +48,7 @@ const request = (method, path) => {
 
     return {
         async then(...params) {
-            return fetch(url + path, req,{mode: 'cors'})
+            return fetch(url + path, req,{mode: 'no-cors'})
                 .then((res) => res.json())
                 .then((res) => {
                     if (res.error !== null) {
