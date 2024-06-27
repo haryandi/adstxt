@@ -302,7 +302,6 @@ const comments = (() => {
        var m= result["data"]["link"];
        
          UCAPAN.innerHTML = null;
-  pagination.setResultData(result["data"]["link"].length);
 
                     if (result["data"]["link"].length == 0) {
                         UCAPAN.innerHTML = `<div class="h6 text-center">Tidak ada data</div>`;
