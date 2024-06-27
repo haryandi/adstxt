@@ -310,17 +310,18 @@ const comments = () =>{
                   
         const DIV = document.createElement('div');
         DIV.classList.add('mb-3');
+                    var xc =null;
+                    if (m[i].hadir==1){
+                  xc = ' <i class="fa-solid fa-circle-check text-success"></i>'}
+                    else {
+xc = '<i class="fa-solid fa-circle-xmark text-danger"></i>'}
+
+                    }
        DIV.innerHTML = `
         <div class="card-body bg-light shadow p-3 m-0 rounded-4" data-parent="true" id="${m[i].id}">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
                 <p class="text-dark text-truncate m-0 p-0" style="font-size: 0.95rem;">
-                    <strong class="me-1">${m[i].nama}</strong>
-                    if (m[i].hadir==1){
-                    <i class="fa-solid fa-circle-check text-success"></i>}
-                    else {
-                                        <i class="fa-solid fa-circle-xmark text-danger"></i>}
-
-                    }
+                    <strong class="me-1">${m[i].nama}</strong>'+xc+'                    
                 </p>
             </div>
             <hr class="text-dark my-1">
