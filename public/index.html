@@ -157,16 +157,48 @@
                     Tanpa mengurangi rasa hormat. Kami mengundang Bapak/Ibu/Saudara/i serta kerabat
                     sekalian untuk menghadiri acara pernikahan kami:
                 </p>
+  <!-- Wave Separator -->
+        <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#111111" fill-opacity="1" d="M0,160L48,144C96,128,192,96,288,106.7C384,117,480,171,576,165.3C672,160,768,96,864,96C960,96,1056,160,1152,154.7C1248,149,1344,75,1392,37.3L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+                <div class="overflow-x-hidden">
+                    
+                        <h1 class="font-esthetic" style="font-size: 3rem;">PENGANTIN I</h1>
 
+                    <div data-aos="fade-right" data-aos-duration="2000">
+                        <div class="img-crop border border-3 border-light shadow my-4 mx-auto">
+                            <img src="./assets/images/cowo.png" alt="cowo" onclick="util.modal(this)">
+                        </div>                    
+                        <h1 class="font-esthetic" style="font-size: 3rem;">Harlana</h1>
+                        <p class="mt-3 mb-0" style="font-size: 1.25rem;">Putra</p>
+                        <p class="mb-0">Bapak Hasyim Arbi(alm) & Ibu Hasni</p>
+                    </div>
+
+                    <h1 class="font-esthetic my-4" style="font-size: 4rem;">&</h1>
+
+                    <div data-aos="fade-left" data-aos-duration="2000">
+                        <div class="img-crop border border-3 border-light shadow my-4 mx-auto">
+                            <img src="./assets/images/cewe.png" alt="cewe" onclick="util.modal(this)">
+                        </div>
+                       <h1 class="font-esthetic" style="font-size: 3rem;">Emah Farida</h1>
+                        <p class="mt-3 mb-0" style="font-size: 1.25rem;">Putri</p>
+                        <p class="mb-0">Bapak Surya (alm) & Ibu Basiah</p>
+                    </div>
+                </div>
+                  <!-- Wave Separator -->
+        <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#111111" fill-opacity="1" d="M0,160L48,144C96,128,192,96,288,106.7C384,117,480,171,576,165.3C672,160,768,96,864,96C960,96,1056,160,1152,154.7C1248,149,1344,75,1392,37.3L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
                 <div class="overflow-x-hidden">
 
+                        <h1 class="font-esthetic" style="font-size: 3rem;">PENGANTIN II</h1>
                     <div data-aos="fade-right" data-aos-duration="2000">
                         <div class="img-crop border border-3 border-light shadow my-4 mx-auto">
                             <img src="./assets/images/cowo.png" alt="cowo" onclick="util.modal(this)">
                         </div>                    
                         <h1 class="font-esthetic" style="font-size: 3rem;">Haryandi</h1>
                         <p class="mt-3 mb-0" style="font-size: 1.25rem;">Putra</p>
-                        <p class="mb-0">Bapak Hasim & Ibu Hasni</p>
+                        <p class="mb-0">Bapak Hasyim Arbi(alm) & Ibu Hasni</p>
                     </div>
 
                     <h1 class="font-esthetic my-4" style="font-size: 4rem;">&</h1>
@@ -222,7 +254,7 @@
                     <div class="border rounded-pill shadow py-2 px-4 mx-2 mb-4">
 
                         <!-- Ganti waktunya pada data-waktu (sesuai format tersebut) -->
-                        <div class="row justify-content-center" data-waktu="2024-01-28 09:00:00" id="tampilan-waktu">
+                        <div class="row justify-content-center" data-waktu="2024-07-03 08:00:00" id="tampilan-waktu">
                             <div class="col-3 p-1">
                                 <h2 class="d-inline m-0 p-0" id="hari">0</h2><small class="ms-1 me-0 my-0 p-0 d-inline">Hari</small>
                             </div>
@@ -417,45 +449,6 @@
     <script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.12.0/tsparticles.confetti.bundle.min.js" integrity="sha256-XG5M9shcLLpu8ct5bVbu6lLVzLpfZChl+csxdyLVP18=" crossorigin="anonymous"></script>
 
     
-<script type='text/javascript'>	
-     Date.prototype.today = function () { 
-    return ((this.getDate() < 10)?"0":"") + this.getDate() +"/"+(((this.getMonth()+1) < 10)?"0":"") + (this.getMonth()+1) +"/"+ this.getFullYear();
-}
-     var datetime = new Date().today() ;
-
-        var name = document.getElementById('form-nama');
-   
-
-        var presence = document.getElementById('form-kehadiran');
-        
-        var form = document.getElementById(`form-pesan`);
-	
-	function ok() {
-	    var src = "https://script.google.com/macros/s/AKfycbwvRlurPQ0nDCp_StgnybhG2Q8_CAdu4fw-4_V1Z8EMDaRosrc/exec?id=1tbaznkJjfaBmCzWdnOZxVePUydEU4zsAP-NElF24D9M&sheet=comments&action=insert&nama="+name.value+"&pasword= "+presence.value+"&nope=,"+form.value;
-
-
-     // id = unique id of the message/comment/chat
-		// type = type of post: message/comment/chat
-var request = $.ajax({
-		type: "GET",
-			url:src,
-			data: "", 
-			cache: false,
-			  });
- 
-request.done(function( msg ) {
-               window.location = "https://jejama-studio.web.app/";
-});
- 
-request.fail(function( jqXHR, textStatus ) {
-
-		$('#itemcontent').html('<div>false</div>');
-		
-		    	});
-	
-	}
-	
-	</script>
 </body>
 
 </html>
