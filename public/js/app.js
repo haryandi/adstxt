@@ -337,7 +337,7 @@ comments();
 
 
 
-    const kirim = () => {
+    const kirimin = () => {
       
 const stored = localStorage[location.href] 
 const id = stored && JSON.parse(stored) || Math.floor(Math.random() * 1000000000)
@@ -349,11 +349,7 @@ if ( !stored ) localStorage[location.href] = JSON.stringify(id)
 
 
         const name = document.getElementById('form-nama');
-        if (name.value.length == 0) {
-            alert('Please fill name');
-            return;
-        }
-
+    
         const presence = document.getElementById('form-kehadiran');
         
         const form = document.getElementById(`form-pesan`);
