@@ -401,6 +401,6 @@ const pagination = (() => {
             ${innerComment(data)}
         </div>`;
 
-                     UCAPAN.appendChild(renderCard(DIV));
+                     UCAPAN.appendChild(DIV);
        });
      });
