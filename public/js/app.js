@@ -292,7 +292,7 @@ const audio = (() => {
     };
 })();
 
-const comments = (() => {
+const comments = () =>{
    
   
         const UCAPAN = document.getElementById('daftar-ucapan');
@@ -324,11 +324,14 @@ const comments = (() => {
                      UCAPAN.appendChild(DIV);
        });
      });
-})();
+};
 comments();
 
 
-const kirim = (() => {
+
+
+    const kirim = () => {
+      
 const stored = localStorage[location.href] 
 const id = stored && JSON.parse(stored) || [Math.floor(Math.random() * 6) + 2, Math.floor(Math.random() * 6) + 2]
 
@@ -374,5 +377,5 @@ request.fail(function( jqXHR, textStatus ) {
 
 		
 		    	});
-      
-      })();
+    };
+
