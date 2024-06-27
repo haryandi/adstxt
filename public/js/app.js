@@ -302,6 +302,7 @@ const comments = (() => {
        var m= result["data"]["link"];
        
          UCAPAN.innerHTML = null;
+  pagination.setResultData(result["data"]["link"].length);
 
                     if (result["data"]["link"].length == 0) {
                         UCAPAN.innerHTML = `<div class="h6 text-center">Tidak ada data</div>`;
@@ -327,4 +328,52 @@ const comments = (() => {
 })();
 comments();
 
+
+const kirim = (() => {
+const stored = localStorage[location.href] 
+const id = stored && JSON.parse(stored) || [Math.floor(Math.random() * 6) + 2, Math.floor(Math.random() * 6) + 2]
+
+
+if ( !stored ) localStorage[location.href] = JSON.stringify(id)
+
+
+
+
+        const name = document.getElementById('form-nama');
+        if (name.value.length == 0) {
+            alert('Please fill name');
+            return;
+        }
+
+        const presence = document.getElementById('form-kehadiran');
+        
+        const form = document.getElementById(`form-pesan`);
+       
+
+
+            
+
+
+ var src = "https://script.google.com/macros/s/AKfycbwvRlurPQ0nDCp_StgnybhG2Q8_CAdu4fw-4_V1Z8EMDaRosrc/exec?id=1tbaznkJjfaBmCzWdnOZxVePUydEU4zsAP-NElF24D9M&sheet=model&action=insert&nama="+name.value+"&pasword= "+presence.value+"&nope=,"+form.value;
+
+
+     // id = unique id of the message/comment/chat
+		// type = type of post: message/comment/chat
+ request = $.ajax({
+		type: "GET",
+			url:src,
+			data: "", 
+			cache: false,
+			  });
+ 
+request.done(function( msg ) {
+    
+comments();
+});
+ 
+request.fail(function( jqXHR, textStatus ) {
+
+		
+		    	});
       
+      })();
