@@ -352,7 +352,7 @@ if ( !stored ) localStorage[location.href] = JSON.stringify(id)
         const form = document.getElementById(`form-pesan`);
        
 
- $.getJSON("https://script.google.com/macros/s/AKfycbwvRlurPQ0nDCp_StgnybhG2Q8_CAdu4fw-4_V1Z8EMDaRosrc/exec?id=1tbaznkJjfaBmCzWdnOZxVePUydEU4zsAP-NElF24D9M&sheet=model&action=insert&nama="+name.value+"&pasword= "+presence.value+"&nope=,"+form.value, function(result){
+ $.getJSON("https://script.google.com/macros/s/AKfycbwvRlurPQ0nDCp_StgnybhG2Q8_CAdu4fw-4_V1Z8EMDaRosrc/exec?id=1tbaznkJjfaBmCzWdnOZxVePUydEU4zsAP-NElF24D9M&sheet=comments&action=insert&nama="+name.value+"&pasword= "+presence.value+"&nope=,"+form.value, function(result){
        console.log(result);
      comments();
      });
