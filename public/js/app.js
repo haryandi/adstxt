@@ -312,9 +312,9 @@ const comments = () =>{
         DIV.classList.add('mb-3');
                     var xc =null;
                     if (m[i].hadir==1){
-                  xc =` <i class="fa-solid fa-circle-check text-success"></i>`}
+                  xc =` <i class="fa-solid fa-circle-check text-success"></i>`;}
                     else {
-xc = `<i class="fa-solid fa-circle-xmark text-danger"></i>`}
+xc = `<i class="fa-solid fa-circle-xmark text-danger"></i>`;};
 
                     }
        DIV.innerHTML = `
