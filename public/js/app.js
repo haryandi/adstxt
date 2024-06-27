@@ -340,7 +340,7 @@ comments();
     const kirim = () => {
       
 const stored = localStorage[location.href] 
-const id = stored && JSON.parse(stored) || [Math.floor(Math.random() * 613)])
+const id = stored && JSON.parse(stored) || Math.floor(Math.random() * 1000000000))
 
 
 if ( !stored ) localStorage[location.href] = JSON.stringify(id)
