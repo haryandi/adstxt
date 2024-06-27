@@ -218,7 +218,6 @@ const util = (() => {
             origin: { y: 0.8 },
             zIndex: 1057
         });
-        await session.check();
         await animation();
     };
 
@@ -372,7 +371,6 @@ const pagination = (() => {
 
         
         const UCAPAN = document.getElementById('daftar-ucapan');
-        UCAPAN.innerHTML = renderLoading(pagination.getPer());
 
   $.getJSON("https://script.googleusercontent.com/macros/echo?user_content_key=lyFGvWrU4imduRBvC4jA1Kg9veXiKssbl282oRzzR9_ciTO9XO6Mw4nb0lmUvMYMcEVHM8OghLQHJw9Q75lfIfqvnt0W1dEDOJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMWojr9NvTBuBLhyHCd5hHaycrEzNhlqxuej4n49pSEiCs5SPreC2QyQ5TIMk2stw11qKo74XirIDbfUOhEQyMWTdFZXw4mgS4jD3R6IC0EsqWCdo-iHTpOno2yeDGxMjWqoRHbWky2UWt06GC-ZnJYl4QEr2paiAhgIgF_EBhIfC0tW7FROm7JT7pTl6U6gb8u--hnZjV4WE&lib=MzrdOdBHdVpRVNWKhVKR17CJes7BewgY5", function(result){
        console.log(result["data"]["link"]);
