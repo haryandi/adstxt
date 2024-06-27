@@ -297,9 +297,9 @@ const comments = () =>{
   
         const UCAPAN = document.getElementById('daftar-ucapan');
 
-  $.getJSON("https://script.googleusercontent.com/macros/echo?user_content_key=lyFGvWrU4imduRBvC4jA1Kg9veXiKssbl282oRzzR9_ciTO9XO6Mw4nb0lmUvMYMcEVHM8OghLQHJw9Q75lfIfqvnt0W1dEDOJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMWojr9NvTBuBLhyHCd5hHaycrEzNhlqxuej4n49pSEiCs5SPreC2QyQ5TIMk2stw11qKo74XirIDbfUOhEQyMWTdFZXw4mgS4jD3R6IC0EsqWCdo-iHTpOno2yeDGxMjWqoRHbWky2UWt06GC-ZnJYl4QEr2paiAhgIgF_EBhIfC0tW7FROm7JT7pTl6U6gb8u--hnZjV4WE&lib=MzrdOdBHdVpRVNWKhVKR17CJes7BewgY5", function(result){
-       console.log(result["data"]["link"]);
-       var m= result["data"]["link"];
+  $.getJSON("https://script.google.com/macros/s/AKfycbwvRlurPQ0nDCp_StgnybhG2Q8_CAdu4fw-4_V1Z8EMDaRosrc/exec?id=1tbaznkJjfaBmCzWdnOZxVePUydEU4zsAP-NElF24D9M&sheet=comments&action=readAll", function(result){
+       console.log(result["data"]["comments"]);
+       var m= result["data"]["comments"];
        
          UCAPAN.innerHTML = null;
 
@@ -311,14 +311,14 @@ const comments = () =>{
         const DIV = document.createElement('div');
         DIV.classList.add('mb-3');
        DIV.innerHTML = `
-        <div class="card-body bg-light shadow p-3 m-0 rounded-4" data-parent="true" id="${m[i].Judul}">
+        <div class="card-body bg-light shadow p-3 m-0 rounded-4" data-parent="true" id="${m[i].id}">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
                 <p class="text-dark text-truncate m-0 p-0" style="font-size: 0.95rem;">
-                    <strong class="me-1">${m[i].Judul}</strong><i class="fa-solid fa-circle-check text-success"></i>
+                    <strong class="me-1">${m[i].nama}</strong><i class="fa-solid fa-circle-check text-success"></i>
                 </p>
             </div>
             <hr class="text-dark my-1">
-            <p class="text-dark mt-0 mb-1 mx-0 p-0" style="white-space: pre-line">${m[i].Judul}</p>
+            <p class="text-dark mt-0 mb-1 mx-0 p-0" style="white-space: pre-line">${m[i].komentar}</p>
         </div>`;
 
                      UCAPAN.appendChild(DIV);
