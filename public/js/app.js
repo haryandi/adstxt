@@ -476,9 +476,6 @@ const like = (() => {
 })();
 
 const comment = (() => {
-    const buttonBatal = document.getElementById('batal');
-    const buttonBalas = document.getElementById('balas');
-    const buttonUbah = document.getElementById('ubah');
     const buttonKirim = document.getElementById('kirim');
 
     const formKehadiran = document.getElementById('form-kehadiran');
@@ -591,82 +588,6 @@ const comment = (() => {
         formPesan.disabled = false;
     };
 
-    const balasan = async (button) => {
-        resetForm();
-
-        button.disabled = true;
-        let tmp = button.innerText;
-        button.innerText = 'Loading...';
-
-        let id = button.getAttribute('data-uuid');
-        let token = localStorage.getItem('token') ?? '';
-
-        if (token.length == 0) {
-            alert('Terdapat kesalahan, token kosong !');
-            window.location.reload();
-            return;
-        }
-
-        document.getElementById('balasan').innerHTML = renderLoading(1);
-        formKehadiran.style.display = 'none';
-        document.getElementById('label-kehadiran').style.display = 'none';
-
-        await request('GET', '/api/comment/' + id)
-            .token(token)
-            .then((res) => {
-                if (res.code == 200) {
-                    buttonKirim.style.display = 'none';
-                    buttonBatal.style.display = 'block';
-                    buttonBalas.style.display = 'block';
-
-                    temporaryID = id;
-
-                    document.getElementById('balasan').innerHTML = `
-                    <div class="my-3">
-                        <h6>Balasan</h6>
-                        <div id="id-balasan" data-uuid="${id}" class="card-body bg-light shadow p-3 rounded-4">
-                            <div class="d-flex flex-wrap justify-content-between align-items-center">
-                                <p class="text-dark text-truncate m-0 p-0" style="font-size: 0.95rem;">
-                                    <strong>${util.escapeHtml(res.data.nama)}</strong>
-                                </p>
-                                <small class="text-dark m-0 p-0" style="font-size: 0.75rem;">${res.data.created_at}</small>
-                            </div>
-                            <hr class="text-dark my-1">
-                            <p class="text-dark m-0 p-0" style="white-space: pre-line">${convertMarkdownToHTML(util.escapeHtml(res.data.komentar))}</p>
-                        </div>
-                    </div>`;
-                }
-            })
-            .catch((err) => {
-                resetForm();
-                alert(`Terdapat kesalahan: ${err}`);
-            });
-
-        document.getElementById('ucapan').scrollIntoView({ behavior: 'smooth' });
-        button.disabled = false;
-        button.innerText = tmp;
-    };
-
-    const innerComment = (data) => {
-        return `
-        <div class="d-flex flex-wrap justify-content-between align-items-center">
-            <div class="d-flex flex-wrap justify-content-start align-items-center">
-                <button style="font-size: 0.8rem;" onclick="comment.balasan(this)" data-uuid="${data.uuid}" class="btn btn-sm btn-outline-dark rounded-3 py-0">Balas</button>
-                ${owns.has(data.uuid)
-                ? `
-                <button style="font-size: 0.8rem;" onclick="comment.edit(this)" data-uuid="${data.uuid}" class="btn btn-sm btn-outline-dark rounded-3 py-0 ms-1">Ubah</button>
-                <button style="font-size: 0.8rem;" onclick="comment.hapus(this)" data-uuid="${data.uuid}" class="btn btn-sm btn-outline-dark rounded-3 py-0 ms-1">Hapus</button>`
-                : ''}
-            </div>
-            <button style="font-size: 0.8rem;" onclick="like.like(this)" data-uuid="${data.uuid}" class="btn btn-sm btn-outline-dark rounded-2 py-0 px-0">
-                <div class="d-flex justify-content-start align-items-center">
-                    <p class="my-0 mx-1" data-suka="${data.like.love}">${data.like.love} suka</p>
-                    <i class="py-1 me-1 p-0 ${likes.has(data.uuid) ? 'fa-solid fa-heart text-danger' : 'fa-regular fa-heart'}"></i>
-                </div>
-            </button>
-        </div>
-        ${innerCard(data.comments)}`;
-    };
 
     const innerCard = (comment) => {
         let result = '';
@@ -689,14 +610,29 @@ const comment = (() => {
         return result;
     };
 
-    const renderCard = (data) => {
+        
+        const UCAPAN = document.getElementById('daftar-ucapan');
+        UCAPAN.innerHTML = renderLoading(pagination.getPer());
+
+  $.getJSON("https://script.googleusercontent.com/macros/echo?user_content_key=lyFGvWrU4imduRBvC4jA1Kg9veXiKssbl282oRzzR9_ciTO9XO6Mw4nb0lmUvMYMcEVHM8OghLQHJw9Q75lfIfqvnt0W1dEDOJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMWojr9NvTBuBLhyHCd5hHaycrEzNhlqxuej4n49pSEiCs5SPreC2QyQ5TIMk2stw11qKo74XirIDbfUOhEQyMWTdFZXw4mgS4jD3R6IC0EsqWCdo-iHTpOno2yeDGxMjWqoRHbWky2UWt06GC-ZnJYl4QEr2paiAhgIgF_EBhIfC0tW7FROm7JT7pTl6U6gb8u--hnZjV4WE&lib=MzrdOdBHdVpRVNWKhVKR17CJes7BewgY5", function(result){
+       console.log(result["data"]["link"]);
+       var m= result["data"]["link"];
+       
+         UCAPAN.innerHTML = null;
+  pagination.setResultData(result["data"]["link"].length);
+
+                    if (result["data"]["link"].length == 0) {
+                        UCAPAN.innerHTML = `<div class="h6 text-center">Tidak ada data</div>`;
+                    }
+                $.each(m, function(i){
+                  
         const DIV = document.createElement('div');
         DIV.classList.add('mb-3');
-        DIV.innerHTML = `
+       DIV.innerHTML = `
         <div class="card-body bg-light shadow p-3 m-0 rounded-4" data-parent="true" id="${data.uuid}">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
                 <p class="text-dark text-truncate m-0 p-0" style="font-size: 0.95rem;">
-                    <strong class="me-1">${util.escapeHtml(data.nama)}</strong><i class="fa-solid ${data.hadir ? 'fa-circle-check text-success' : 'fa-circle-xmark text-danger'}"></i>
+                    <strong class="me-1">${util.escapeHtml(m[i].Link)}</strong><i class="fa-solid ${m[i].Judul ? 'fa-circle-check text-success' : 'fa-circle-xmark text-danger'}"></i>
                 </p>
                 <small class="text-dark m-0 p-0" style="font-size: 0.75rem;">${data.created_at}</small>
             </div>
@@ -704,295 +640,10 @@ const comment = (() => {
             <p class="text-dark mt-0 mb-1 mx-0 p-0" style="white-space: pre-line">${convertMarkdownToHTML(util.escapeHtml(data.komentar))}</p>
             ${innerComment(data)}
         </div>`;
-        return DIV;
-    };
 
-    const ucapan = async () => {
-        const UCAPAN = document.getElementById('daftar-ucapan');
-        UCAPAN.innerHTML = renderLoading(pagination.getPer());
+                     UCAPAN.appendChild(renderCard(DIV));
+       });
+     });
 
-        let token = localStorage.getItem('token') ?? '';
-        if (token.length == 0) {
-            alert('Terdapat kesalahan, token kosong !');
-            window.location.reload();
-            return;
-        }
 
-        await request('GET', `/api/comment?per=${pagination.getPer()}&next=${pagination.getNext()}`)
-            .token(token)
-            .then((res) => {
-                if (res.code == 200) {
-                    UCAPAN.innerHTML = null;
-                    res.data.forEach((data) => UCAPAN.appendChild(renderCard(data)));
-                    pagination.setResultData(res.data.length);
-
-                    if (res.data.length == 0) {
-                        UCAPAN.innerHTML = `<div class="h6 text-center">Tidak ada data</div>`;
-                    }
-                }
-            })
-            .catch((err) => alert(`Terdapat kesalahan: ${err}`));
-    };
-
-    const renderLoading = (num) => {
-        let result = '';
-
-        for (let index = 0; index < num; index++) {
-            result += `
-            <div class="mb-3">
-                <div class="card-body bg-light shadow p-3 m-0 rounded-4">
-                    <div class="d-flex flex-wrap justify-content-between align-items-center placeholder-glow">
-                        <span class="placeholder bg-secondary col-5"></span>
-                        <span class="placeholder bg-secondary col-3"></span>
-                    </div>
-                    <hr class="text-dark my-1">
-                    <p class="card-text placeholder-glow">
-                        <span class="placeholder bg-secondary col-6"></span>
-                        <span class="placeholder bg-secondary col-5"></span>
-                        <span class="placeholder bg-secondary col-12"></span>
-                    </p>
-                </div>
-            </div>`;
-        }
-
-        return result;
-    };
-
-    const balas = async () => {
-        let nama = formNama.value;
-        let komentar = formPesan.value;
-        let token = localStorage.getItem('token') ?? '';
-        let id = document.getElementById('id-balasan').getAttribute('data-uuid');
-
-        if (token.length == 0) {
-            alert('Terdapat kesalahan, token kosong !');
-            window.location.reload();
-            return;
-        }
-
-        if (nama.length == 0) {
-            alert('nama tidak boleh kosong');
-            return;
-        }
-
-        if (nama.length >= 35) {
-            alert('panjangan nama maksimal 35');
-            return;
-        }
-
-        if (komentar.length == 0) {
-            alert('pesan tidak boleh kosong');
-            return;
-        }
-
-        formNama.disabled = true;
-        formPesan.disabled = true;
-
-        buttonBatal.disabled = true;
-        buttonBalas.disabled = true;
-        let tmp = buttonBalas.innerHTML;
-        buttonBalas.innerHTML = loader;
-
-        let isSuccess = false;
-        await request('POST', '/api/comment')
-            .token(token)
-            .body({
-                nama: nama,
-                id: id,
-                komentar: komentar
-            })
-            .then((res) => {
-                if (res.code == 201) {
-                    isSuccess = true;
-                    owns.set(res.data.uuid, res.data.own);
-                }
-            })
-            .catch((err) => {
-                alert(`Terdapat kesalahan: ${err}`);
-            });
-
-        if (isSuccess) {
-            await ucapan();
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'center' });
-            resetForm();
-        }
-
-        buttonBatal.disabled = false;
-        buttonBalas.disabled = false;
-        buttonBalas.innerHTML = tmp;
-        formNama.disabled = false;
-        formPesan.disabled = false;
-    };
-
-    const ubah = async () => {
-        let token = localStorage.getItem('token') ?? '';
-        let id = buttonUbah.getAttribute('data-uuid');
-        let hadir = formKehadiran.value;
-        let komentar = formPesan.value;
-
-        if (token.length == 0) {
-            alert('Terdapat kesalahan, token kosong !');
-            window.location.reload();
-            return;
-        }
-
-        if (document.getElementById(id).getAttribute('data-parent') === 'true' && hadir == 0) {
-            alert('silahkan pilih kehadiran');
-            return;
-        }
-
-        if (komentar.length == 0) {
-            alert('pesan tidak boleh kosong');
-            return;
-        }
-
-        formKehadiran.disabled = true;
-        formPesan.disabled = true;
-
-        buttonUbah.disabled = true;
-        buttonBatal.disabled = true;
-        let tmp = buttonUbah.innerHTML;
-        buttonUbah.innerHTML = loader;
-
-        let isSuccess = false;
-        await request('PUT', '/api/comment/' + owns.get(id))
-            .body({
-                hadir: parseInt(hadir) == 1,
-                komentar: komentar
-            })
-            .token(token)
-            .then((res) => {
-                if (res.data.status) {
-                    isSuccess = true;
-                }
-            })
-            .catch((err) => {
-                alert(`Terdapat kesalahan: ${err}`);
-            });
-
-        if (isSuccess) {
-            await ucapan();
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'center' });
-            resetForm();
-        }
-
-        buttonUbah.innerHTML = tmp;
-        buttonUbah.disabled = false;
-        buttonBatal.disabled = false;
-        formKehadiran.disabled = false;
-        formPesan.disabled = false;
-    };
-
-    const hapus = async (button) => {
-        if (!confirm('Kamu yakin ingin menghapus?')) {
-            return;
-        }
-
-        let token = localStorage.getItem('token') ?? '';
-        let id = button.getAttribute('data-uuid');
-
-        if (token.length == 0) {
-            alert('Terdapat kesalahan, token kosong !');
-            window.location.reload();
-            return;
-        }
-
-        resetForm();
-
-        button.disabled = true;
-        let tmp = button.innerText;
-        button.innerText = 'Loading..';
-
-        let isSuccess = false;
-        await request('DELETE', '/api/comment/' + owns.get(id))
-            .token(token)
-            .then((res) => {
-                if (res.data.status) {
-                    owns.unset(id);
-                    isSuccess = true;
-                }
-            })
-            .catch((err) => {
-                alert(`Terdapat kesalahan: ${err}`);
-            });
-
-        if (isSuccess) {
-            ucapan();
-        }
-
-        button.innerText = tmp;
-        button.disabled = false;
-    };
-
-    const edit = async (button) => {
-        resetForm();
-
-        button.disabled = true;
-        let tmp = button.innerText;
-        button.innerText = 'Loading...';
-
-        let id = button.getAttribute('data-uuid').toString();
-        let token = localStorage.getItem('token') ?? '';
-
-        if (token.length == 0) {
-            alert('Terdapat kesalahan, token kosong !');
-            window.location.reload();
-            return;
-        }
-
-        await request('GET', '/api/comment/' + id)
-            .token(token)
-            .then((res) => {
-                if (res.code == 200) {
-                    temporaryID = id;
-
-                    buttonBatal.style.display = 'block';
-                    buttonUbah.style.display = 'block';
-                    buttonKirim.style.display = 'none';
-                    buttonUbah.setAttribute('data-uuid', id);
-
-                    formPesan.value = res.data.komentar;
-                    formNama.value = res.data.nama;
-                    formNama.disabled = true;
-
-                    if (document.getElementById(id).getAttribute('data-parent') !== 'true') {
-                        document.getElementById('label-kehadiran').style.display = 'none';
-                        formKehadiran.style.display = 'none';
-                    } else {
-                        formKehadiran.value = res.data.hadir ? 1 : 2;
-                        document.getElementById('label-kehadiran').style.display = 'block';
-                        formKehadiran.style.display = 'block';
-                    }
-
-                    document.getElementById('ucapan').scrollIntoView({ behavior: 'smooth' });
-                }
-            })
-            .catch((err) => {
-                alert(`Terdapat kesalahan: ${err}`);
-            });
-
-        button.disabled = false;
-        button.innerText = tmp;
-    };
-
-    const batal = () => {
-        if (temporaryID) {
-            document.getElementById(temporaryID).scrollIntoView({ behavior: 'smooth', block: 'center' });
-            temporaryID = null;
-        }
-
-        resetForm();
-    };
-
-    return {
-        ucapan,
-        renderLoading,
-        balasan,
-        hapus,
-        edit,
-        batal,
-        balas,
-        ubah,
-        kirim,
-    };
 })();
