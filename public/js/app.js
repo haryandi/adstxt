@@ -303,7 +303,7 @@ const comments = () =>{
        
          UCAPAN.innerHTML = null;
 
-                    if (result["data"]["link"].length == 0) {
+                    if (result["data"]["comments"].length == 0) {
                         UCAPAN.innerHTML = `<div class="h6 text-center">Tidak ada data</div>`;
                     }
                 $.each(m, function(i){
@@ -314,7 +314,13 @@ const comments = () =>{
         <div class="card-body bg-light shadow p-3 m-0 rounded-4" data-parent="true" id="${m[i].id}">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
                 <p class="text-dark text-truncate m-0 p-0" style="font-size: 0.95rem;">
-                    <strong class="me-1">${m[i].nama}</strong><i class="fa-solid fa-circle-check text-success"></i>
+                    <strong class="me-1">${m[i].nama}</strong>
+                    if (m[i].hadir==1){
+                    <i class="fa-solid fa-circle-check text-success"></i>}
+                    else {
+                                        <i class="fa-solid fa-circle-xmark text-danger"></i>}
+
+                    }
                 </p>
             </div>
             <hr class="text-dark my-1">
