@@ -292,84 +292,9 @@ const audio = (() => {
     };
 })();
 
-const pagination = (() => {
-
-    const perPage = 10;
-    let pageNow = 0;
-    let resultData = 0;
-
-    const page = document.getElementById('page');
-    const prev = document.getElementById('previous');
-    const next = document.getElementById('next');
-
-    const disabledPrevious = () => {
-        prev.classList.add('disabled');
-    };
-
-    const disabledNext = () => {
-        next.classList.add('disabled');
-    };
-
-    const buttonAction = async (button) => {
-        let tmp = button.innerHTML;
-        button.disabled = true;
-        button.innerHTML = `<span class="spinner-border spinner-border-sm me-1"></span>Loading...`;
-        await comment.ucapan();
-        document.getElementById('daftar-ucapan').scrollIntoView({ behavior: 'smooth' });
-        button.disabled = false;
-        button.innerHTML = tmp;
-    };
-
-    return {
-        getPer: () => {
-            return perPage;
-        },
-        getNext: () => {
-            return pageNow;
-        },
-        reset: async () => {
-            pageNow = 0;
-            resultData = 0;
-            page.innerText = 1;
-            next.classList.remove('disabled');
-            await comment.ucapan();
-            disabledPrevious();
-        },
-        setResultData: (len) => {
-            resultData = len;
-            if (resultData < perPage) {
-                disabledNext();
-            }
-        },
-        previous: async (button) => {
-            if (pageNow < 0) {
-                disabledPrevious();
-            } else {
-                pageNow -= perPage;
-                disabledNext();
-                await buttonAction(button);
-                page.innerText = parseInt(page.innerText) - 1;
-                next.classList.remove('disabled');
-                if (pageNow <= 0) {
-                    disabledPrevious();
-                }
-            }
-        },
-        next: async (button) => {
-            if (resultData < perPage) {
-                disabledNext();
-            } else {
-                pageNow += perPage;
-                disabledPrevious();
-                await buttonAction(button);
-                page.innerText = parseInt(page.innerText) + 1;
-                prev.classList.remove('disabled');
-            }
-        }
-    };
-})();
-
-        
+const comments = (() => {
+   
+  
         const UCAPAN = document.getElementById('daftar-ucapan');
 
   $.getJSON("https://script.googleusercontent.com/macros/echo?user_content_key=lyFGvWrU4imduRBvC4jA1Kg9veXiKssbl282oRzzR9_ciTO9XO6Mw4nb0lmUvMYMcEVHM8OghLQHJw9Q75lfIfqvnt0W1dEDOJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMWojr9NvTBuBLhyHCd5hHaycrEzNhlqxuej4n49pSEiCs5SPreC2QyQ5TIMk2stw11qKo74XirIDbfUOhEQyMWTdFZXw4mgS4jD3R6IC0EsqWCdo-iHTpOno2yeDGxMjWqoRHbWky2UWt06GC-ZnJYl4QEr2paiAhgIgF_EBhIfC0tW7FROm7JT7pTl6U6gb8u--hnZjV4WE&lib=MzrdOdBHdVpRVNWKhVKR17CJes7BewgY5", function(result){
@@ -400,3 +325,7 @@ const pagination = (() => {
                      UCAPAN.appendChild(DIV);
        });
      });
+})();
+comments();
+
+      
