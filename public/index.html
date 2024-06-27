@@ -314,7 +314,7 @@
                         <button class="flex-fill btn btn-warning btn-sm rounded-3 shadow m-1" style="display: none;" onclick="comment.ubah()" id="ubah">
                             Ubah<i class="fa-solid fa-pen-to-square ms-1"></i>
                         </button>
-                        <button class="flex-fill btn btn-primary btn-sm rounded-3 shadow m-1" onclick="comment.kirim()" id="kirim">
+                        <button class="flex-fill btn btn-primary btn-sm rounded-3 shadow m-1" onclick="kirim()" id="kirim">
                             Kirim<i class="fa-solid fa-paper-plane ms-1"></i>
                         </button>
                     </div>
@@ -322,23 +322,6 @@
 
                 <div class="rounded-4 mt-4 mb-2" id="daftar-ucapan"></div>
 
-                <nav class="d-flex justify-content-center mb-0">
-                    <ul class="pagination mb-0">
-                        <li class="page-item disabled" id="previous">
-                            <button class="page-link" onclick="pagination.previous(this)" aria-label="Sebelumnya">
-                                <i class="fa-solid fa-circle-left me-1"></i>Sebelumnya
-                            </button>
-                        </li>
-                        <li class="page-item disabled">
-                            <span class="page-link text-light" id="page">1</span>
-                        </li>
-                        <li class="page-item" id="next">
-                            <button class="page-link" onclick="pagination.next(this)" aria-label="Selanjutnya">
-                                Selanjutnya<i class="fa-solid fa-circle-right ms-1"></i>
-                            </button>
-                        </li>
-                    </ul>
-                </nav>
             </div>
         </section>
 
