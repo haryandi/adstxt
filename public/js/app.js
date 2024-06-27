@@ -316,7 +316,7 @@ const comments = () =>{
                     else {
 xc = `<i class="fa-solid fa-circle-xmark text-danger"></i>`;};
 
-                    }
+                    
        DIV.innerHTML = `
         <div class="card-body bg-light shadow p-3 m-0 rounded-4" data-parent="true" id="${m[i].id}">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
