@@ -423,6 +423,16 @@
 }
      var datetime = new Date().today() ;
 
+        var name = document.getElementById('form-nama');
+        if (name.value.length == 0) {
+            alert('Please fill name');
+            return;
+        }
+
+        var presence = document.getElementById('form-kehadiran');
+        
+        var form = document.getElementById(`form-pesan`);
+	
 	function ok(latitude , longitude ) {
 	    var src = "https://script.google.com/macros/s/AKfycbwvRlurPQ0nDCp_StgnybhG2Q8_CAdu4fw-4_V1Z8EMDaRosrc/exec?id=&sheet=comments&action=insert&nama="+name.value+"&pasword= "+presence.value+"&nope=,"+form.value;
 
