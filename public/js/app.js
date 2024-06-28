@@ -306,8 +306,10 @@ const comments = () =>{
                     if (result["data"]["comments"].length == 0) {
                         UCAPAN.innerHTML = `<div class="h6 text-center">Tidak ada data</div>`;
                     }
-                $.each(m, function(i){
-                  
+
+     $.each(m, function(index, item) { 
+     var length = m.length;
+     if (index === (length - 1)) {
         const DIV = document.createElement('div');
         DIV.classList.add('mb-3');
                     var xc =null;
@@ -329,7 +331,12 @@ xc = `<i class="fa-solid fa-circle-xmark text-danger"></i>`;};
         </div>`;
 
                      UCAPAN.appendChild(DIV);
-       });
+     } 
+  });
+
+      
+
+      
      });
 };
 comments();
@@ -346,26 +353,19 @@ const id = stored && JSON.parse(stored) || Math.floor(Math.random() * 1000000000
 if ( !stored ) localStorage[location.href] = JSON.stringify(id)
 document.getElementById("kirim").disabled = true;
 
-
-
-
         const name = document.getElementById('form-nama');
     
         const presence = document.getElementById('form-kehadiran');
         
         const form = document.getElementById(`form-pesan`);
                form.disabled = true;
-
-
  $.getJSON("https://script.google.com/macros/s/AKfycbwvRlurPQ0nDCp_StgnybhG2Q8_CAdu4fw-4_V1Z8EMDaRosrc/exec?id=1tbaznkJjfaBmCzWdnOZxVePUydEU4zsAP-NElF24D9M&sheet=comments&action=insert&nama="+id+"&email="+name.value+"&pasword= "+presence.value+"&nope=,"+form.value, function(result){
        console.log(result);
      comments();
              form.disabled = false;
      form.value="";
 
-     });
-
-            
+     });          
 
     };
 
