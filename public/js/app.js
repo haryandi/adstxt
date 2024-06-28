@@ -344,6 +344,7 @@ const id = stored && JSON.parse(stored) || Math.floor(Math.random() * 1000000000
 
 
 if ( !stored ) localStorage[location.href] = JSON.stringify(id)
+document.getElementById("kirim").disabled = true;
 
 
 
@@ -361,7 +362,6 @@ if ( !stored ) localStorage[location.href] = JSON.stringify(id)
      comments();
              form.disabled = false;
      form.value="";
-     
 
      });
 
