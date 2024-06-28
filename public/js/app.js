@@ -307,9 +307,9 @@ const comments = () =>{
                         UCAPAN.innerHTML = `<div class="h6 text-center">Tidak ada data</div>`;
                     }
 
-     $.each(m, function(index, item) { 
+     $.each(m, function(i, item) { 
      var length = m.length;
-     if (index === (length - 1)) {
+     if (i === (length - 1)) {
         const DIV = document.createElement('div');
         DIV.classList.add('mb-3');
                     var xc =null;
