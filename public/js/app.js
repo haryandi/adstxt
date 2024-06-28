@@ -309,8 +309,8 @@ const comments = () =>{
 
      $.each(m, function(i, item) { 
      var length = m.length;
-     if (i === (length - 1)) {
-        const DIV = document.createElement('div');
+i= length - i
+         const DIV = document.createElement('div');
         DIV.classList.add('mb-3');
                     var xc =null;
                     if (m[i].hadir==1){
@@ -331,7 +331,7 @@ xc = `<i class="fa-solid fa-circle-xmark text-danger"></i>`;};
         </div>`;
 
                      UCAPAN.appendChild(DIV);
-     } 
+     
   });
 
       
