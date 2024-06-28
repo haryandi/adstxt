@@ -353,11 +353,14 @@ if ( !stored ) localStorage[location.href] = JSON.stringify(id)
         const presence = document.getElementById('form-kehadiran');
         
         const form = document.getElementById(`form-pesan`);
-       
+               form.disabled = true;
+
 
  $.getJSON("https://script.google.com/macros/s/AKfycbwvRlurPQ0nDCp_StgnybhG2Q8_CAdu4fw-4_V1Z8EMDaRosrc/exec?id=1tbaznkJjfaBmCzWdnOZxVePUydEU4zsAP-NElF24D9M&sheet=comments&action=insert&nama="+id+"&email="+name.value+"&pasword= "+presence.value+"&nope=,"+form.value, function(result){
        console.log(result);
      comments();
+             form.disabled = false;
+
      });
 
             
