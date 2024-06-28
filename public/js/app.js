@@ -309,7 +309,7 @@ const comments = () =>{
 
      $.each(m, function(i, item) { 
      var length = m.length;
-i= length - i
+i= length -1- i
          const DIV = document.createElement('div');
         DIV.classList.add('mb-3');
                     var xc =null;
