@@ -360,6 +360,8 @@ if ( !stored ) localStorage[location.href] = JSON.stringify(id)
        console.log(result);
      comments();
              form.disabled = false;
+     form.value="";
+     
 
      });
 
